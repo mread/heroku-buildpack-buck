@@ -38,4 +38,4 @@ install_buck ${CACHE_DIR}
 
 cd ${BUILD_DIR}
 
-buck test :unit-test
+buck test :unit-test && buck build :app
