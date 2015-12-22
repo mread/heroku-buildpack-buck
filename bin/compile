@@ -13,6 +13,9 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 
+if [ ! -d $CACHE_DIR ]; then
+  mkdir -p $CACHE_DIR
+fi
 
 export NO_BUCKD=true
 
@@ -27,12 +30,11 @@ curl --silent --location $JVM_COMMON_BUILDPACK | tar xzm -C /tmp/jvm-common --st
 javaVersion=$(detect_java_version ${BUILD_DIR})
 install_java ${BUILD_DIR} ${javaVersion}
 
-
 # install ant
-install_ant ${CACHE_DIR}
+install_ant ${CACHE_DIR} | indent
 
 # install buck
-install_buck ${CACHE_DIR}
+install_buck ${CACHE_DIR} | indent
 
 cd ${BUILD_DIR}
 

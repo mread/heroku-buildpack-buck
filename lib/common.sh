@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+function indent() {
+  c='s/^/       /'
+  case $(uname) in
+    Darwin) sed -l "$c";;
+    *)      sed -u "$c";;
+  esac
+}
+
 install_ant() {
   local targetDir=$1
 
@@ -34,7 +42,4 @@ install_buck() {
   fi
   export PATH="${BUCK_HOME}/bin:${PATH}"
 
-#  pushd ${BUCK_HOME}
-#  ant default
-#  popd
 }
