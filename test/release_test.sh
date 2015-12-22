@@ -6,8 +6,10 @@ testDownloadsBuck()
 {
   cp -r ${BUILDPACK_HOME}/test/fixtures/simple_valid/. ${BUILD_DIR}
 
-  compile
+  release
 
-  assertTrue "Failed to find .buck/bin/buck in ${CACHE_DIR}" "[ -f ${CACHE_DIR}/.buck/bin/buck ]"
+  cat ${STD_OUT}
+  cat ${STD_ERR}
+
 }
 

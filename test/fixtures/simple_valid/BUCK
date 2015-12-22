@@ -1,0 +1,23 @@
+java_binary(
+    name = 'app',
+    main_class = 'a.b.c.Server',
+    deps = [
+        ':core'
+    ]
+)
+
+java_library(
+    name = 'core',
+    srcs = glob([
+        'src/**/*.java'
+    ]),
+    deps = [
+    ]
+)
+
+java_test(
+    name = 'unit-test',
+    srcs = glob(['src/test/java/**/*.java']),
+    deps = [
+    ]
+)
