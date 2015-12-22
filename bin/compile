@@ -14,10 +14,9 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 
-
 export NO_BUCKD=true
 
-# download the buildpack
+# download the jvm-common buildpack
 JVM_COMMON_BUILDPACK=${JVM_COMMON_BUILDPACK:-https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/jvm-common.tgz}
 mkdir -p /tmp/jvm-common
 curl --silent --location $JVM_COMMON_BUILDPACK | tar xzm -C /tmp/jvm-common --strip-components=1
@@ -29,10 +28,11 @@ javaVersion=$(detect_java_version ${BUILD_DIR})
 install_java ${BUILD_DIR} ${javaVersion}
 
 
+# install ant
+install_ant ${CACHE_DIR}
 
-install_buck ${BUILD_DIR}
-
-java -version
+# install buck
+install_buck ${CACHE_DIR}
 
 cd ${BUILD_DIR}
 

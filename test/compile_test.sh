@@ -11,8 +11,6 @@ testDownloadsBuck()
   cat ${STD_OUT}
   cat ${STD_ERR}
 
-  assertTrue "Failed to find .buck/bin/buck in ${BUILD_DIR}" "[ -f ${BUILD_DIR}/.buck/bin/buck ]"
-
-
+  assertTrue "Failed to find .buck/bin/buck in ${CACHE_DIR}" "[ -f ${CACHE_DIR}/.buck/bin/buck ]"
 }
 
