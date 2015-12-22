@@ -31,11 +31,12 @@ javaVersion=$(detect_java_version ${BUILD_DIR})
 install_java ${BUILD_DIR} ${javaVersion}
 
 # install ant
-install_ant ${CACHE_DIR} | indent
+install_ant ${CACHE_DIR}
 
 # install buck
-install_buck ${CACHE_DIR} | indent
+install_buck ${CACHE_DIR}
 
 cd ${BUILD_DIR}
 
+echo $PATH
 buck test

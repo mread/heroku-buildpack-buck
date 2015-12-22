@@ -25,6 +25,7 @@ install_ant() {
   fi
 
 	export PATH="${ANT_HOME}/bin:${PATH}"
+	echo $PATH
 
 	ant -version | indent
 }
@@ -47,6 +48,7 @@ install_buck() {
     popd
   fi
   export PATH="${BUCK_HOME}/bin:${PATH}"
+  echo $PATH
 
   buck --version | indent
 }
