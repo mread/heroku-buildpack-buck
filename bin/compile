@@ -33,3 +33,7 @@ install_java ${BUILD_DIR} ${javaVersion}
 install_buck ${BUILD_DIR}
 
 java -version
+
+cd ${BUILD_DIR}
+
+buck test

@@ -8,6 +8,11 @@ testDownloadsBuck()
 
   compile
 
-  assertTrue "Should have .buck/bin/buck" "[ -f ${BUILD_DIR}/.buck/bin/buck ]"
+  cat ${STD_OUT}
+  cat ${STD_ERR}
+
+  assertTrue "Failed to find .buck/bin/buck in ${BUILD_DIR}" "[ -f ${BUILD_DIR}/.buck/bin/buck ]"
+
+
 }
 

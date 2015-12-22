@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 install_buck() {
-  local buildDir=$1
-  buckHome=$buildDir/.buck
+  local targetDir=$1
+  buckHome=$targetDir/.buck
 
   if [ ! -d $buckHome ]; then
     status_pending "Installing Buck"
@@ -15,4 +15,5 @@ install_buck() {
     git reset --hard origin/master
     popd
   fi
+  export PATH="${buckHome}/bin:${PATH}"
 }
