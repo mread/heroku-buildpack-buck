@@ -9,8 +9,6 @@ function indent() {
 }
 
 install_ant() {
-  echo "-----> Installing ant"
-
   local targetDir=$1
 
   ANT_VER="1.9.6"
@@ -18,21 +16,20 @@ install_ant() {
   ANT_HOME=$targetDir/apache-ant-$ANT_VER
 
   if [ ! -d $ANT_HOME ]; then
+    status_pending "Installing Ant"
     pushd $targetDir
     curl --max-time 180 --location ${ANT_URL} | tar xz
     popd
     chmod +x $ANT_HOME/bin/ant
+    status_done
   fi
 
 	export PATH="${ANT_HOME}/bin:${PATH}"
-	echo $PATH
 
 	ant -version | indent
 }
 
 install_buck() {
-  echo "-----> Installing buck"
-
   local targetDir=$1
   BUCK_HOME=$targetDir/.buck
 
@@ -42,13 +39,14 @@ install_buck() {
     git clone ${buckUrl} ${BUCK_HOME}
     status_done
   else
+    status_pending "Updating Buck"
     pushd ${BUCK_HOME}
     git fetch --all
     git reset --hard origin/master
     popd
+    status_done
   fi
   export PATH="${BUCK_HOME}/bin:${PATH}"
-  echo $PATH
 
   buck --version | indent
 }

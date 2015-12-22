@@ -38,5 +38,4 @@ install_buck ${CACHE_DIR}
 
 cd ${BUILD_DIR}
 
-echo $PATH
 buck test
