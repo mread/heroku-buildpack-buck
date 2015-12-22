@@ -30,10 +30,6 @@ install_java ${BUILD_DIR} ${javaVersion}
 
 
 
+install_buck ${BUILD_DIR}
 
-#create the cache dir if it doesn't exist
-mkdir -p $CACHE_DIR
-
-# change to cache dir to install maven
-cd $CACHE_DIR
-install_buck ${CACHE_DIR} ${BUILD_DIR}
+java -version

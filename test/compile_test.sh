@@ -8,7 +8,6 @@ testDownloadsBuck()
 
   compile
 
-  tree -L 3 ${BUILD_DIR}
-  tree -L 3 ${CACHE_DIR}
+  assertTrue "Should have .buck/bin/buck" "[ -f ${BUILD_DIR}/.buck/bin/buck ]"
 }
 
