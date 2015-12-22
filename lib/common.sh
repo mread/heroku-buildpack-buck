@@ -22,6 +22,8 @@ install_ant() {
     popd
     chmod +x $ANT_HOME/bin/ant
     status_done
+  else
+    status "Ant is up-to-date"
   fi
 
 	export PATH="${ANT_HOME}/bin:${PATH}"
@@ -41,9 +43,9 @@ install_buck() {
   else
     status_pending "Updating Buck"
     pushd ${BUCK_HOME}
-    git fetch --all
-    git reset --hard origin/master
-    popd
+    git fetch --all | indent
+    git reset --hard origin/master | indent
+    popd > /dev/null
     status_done
   fi
   export PATH="${BUCK_HOME}/bin:${PATH}"
