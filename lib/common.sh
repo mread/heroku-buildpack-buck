@@ -9,6 +9,8 @@ function indent() {
 }
 
 install_ant() {
+  echo "-----> Installing ant"
+
   local targetDir=$1
 
   ANT_VER="1.9.6"
@@ -23,9 +25,13 @@ install_ant() {
   fi
 
 	export PATH="${ANT_HOME}/bin:${PATH}"
+
+	ant -version | indent
 }
 
 install_buck() {
+  echo "-----> Installing buck"
+
   local targetDir=$1
   BUCK_HOME=$targetDir/.buck
 
@@ -42,4 +48,5 @@ install_buck() {
   fi
   export PATH="${BUCK_HOME}/bin:${PATH}"
 
+  buck --version | indent
 }
