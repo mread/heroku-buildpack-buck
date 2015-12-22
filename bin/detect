@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+# bin/detect BUILD_DIR
 
 if [ -f $1/.buckconfig ]; then
   echo "Buck"
   exit 0
 else
+  echo "Couldn't find .buckconfig in $1"
   exit 1
 fi
